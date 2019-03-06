@@ -6,6 +6,7 @@
 package controllers;
 
 import Database.Database;
+import entities.Products;
 import java.sql.ResultSet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,6 +31,8 @@ public class loginController extends AbstractController {
         Database db = new Database();
         ResultSet rs;
         ModelAndView mv = new ModelAndView("dashboard");
+        Products products = new Products("Product 1", 10);
+        mv.addObject("products", products);
         
         rs = db.Database("ra1.anystream.eu:1011", "example_database", "example_user", "example_password", sql);
         if(rs.first())
