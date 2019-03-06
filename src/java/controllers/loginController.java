@@ -29,7 +29,7 @@ public class loginController extends AbstractController {
                                             "' AND `password` = '" + request.getParameter("password") + "'";
         Database db = new Database();
         ResultSet rs;
-        ModelAndView mv = new ModelAndView("login");
+        ModelAndView mv = new ModelAndView("dashboard");
         
         rs = db.Database("ra1.anystream.eu:1011", "example_database", "example_user", "example_password", sql);
         if(rs.first())
