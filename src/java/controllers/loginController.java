@@ -22,8 +22,11 @@ public class loginController extends AbstractController {
     protected ModelAndView handleRequestInternal(
             HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        throw new UnsupportedOperationException("Not yet implemented");
-        //ModelAndView mv = new ModelAndView("login");
-        //return null;
+        //throw new UnsupportedOperationException("Not yet implemented");
+        ModelAndView mv = new ModelAndView("login");
+        if(request.getParameter("username").equals("admin"))
+            return mv;
+        else
+            return null;
     }
 }
