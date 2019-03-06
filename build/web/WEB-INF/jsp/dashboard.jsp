@@ -11,12 +11,25 @@
 
     <body>
         <h4>Select the products</h4>
-    
-        <select name="products">
+        <p>Cart</p>
+        <p class="cart"></p>
+        
+        <select class="product" name="products">
             <c:forEach items="${products}" var="item">
              <option value="<c:out value="${item.id}"/>"><c:out value="${item.name} - ${item.price} Euros"/></option>
             </c:forEach>
         </select>
-        
+        <button class="btn">Add</button>
+            
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            let cart=document.querySelector(".cart");
+            let btn=document.querySelector(".btn");
+            
+            btn.addEventListener("click",function() {
+                let productValue=document.querySelector(".product").value;
+                cart.innerHTML+=" "+productValue;
+            });
+        </script>
     </body>
 </html>
