@@ -13,7 +13,9 @@
         <h4>Select the products</h4>
     
         <select name="products">
-            <option value="<c:out value="${products.id}"/>"><c:out value="${products.name} - ${products.price} Euros"/></option>
+            <c:forEach items="${products}" var="item">
+             <option value="<c:out value="${item.id}"/>"><c:out value="${item.name} - ${item.price} Euros"/></option>
+            </c:forEach>
         </select>
         
     </body>

@@ -8,6 +8,8 @@ package controllers;
 import Database.Database;
 import entities.Products;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,14 +32,25 @@ public class loginController extends AbstractController {
                                             "' AND `password` = '" + request.getParameter("password") + "'";
         Database db = new Database();
         ResultSet rs;
-        ModelAndView mv = new ModelAndView("dashboard");
-        Products products = new Products("Product 1", 10);
-        mv.addObject("products", products);
+        ResultSet rs2;
+        List<Products> theProducts = new ArrayList<Products>();
         
+        ModelAndView mv = new ModelAndView("dashboard");
         rs = db.Database("ra1.anystream.eu:1011", "example_database", "example_user", "example_password", sql);
-        if(rs.first())
+        if(rs.first()) {
+            sql = "SELECT * FROM `products`";
+            rs2 = db.Database("ra1.anystream.eu:1011", "example_database", "example_user", "example_password", sql);
+            while(rs2.next()) {
+                theProducts.add(new Products(rs2.getString("name"),rs2.getDouble("price")));
+            }
+            mv.addObject("products", theProducts);
+            rs2.close();
             return mv;
+        }
         else
+        {
+            rs.close();
             return null;
+        }
     }
 }
