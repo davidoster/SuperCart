@@ -5,6 +5,8 @@
  */
 package controllers;
 
+import Database.Database;
+import java.sql.ResultSet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,8 +25,14 @@ public class loginController extends AbstractController {
             HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         //throw new UnsupportedOperationException("Not yet implemented");
-        ModelAndView mv = new ModelAndView("login");
-        if(request.getParameter("username").equals("admin"))
+        String sql = "SELECT * FROM `users` WHERE `username` = '"  + request.getParameter("username") + 
+                                            "' AND `password` = '" + request.getParameter("password") + "'";
+        Database db = new Database();
+        ResultSet rs;
+        ModelAndView mv = new ModelAndView("dashboard");
+        
+        rs = db.Database("ra1.anystream.eu:1011", "example_database", "example_user", "example_password", sql);
+        if(rs.first())
             return mv;
         else
             return null;
