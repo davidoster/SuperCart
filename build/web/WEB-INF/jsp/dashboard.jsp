@@ -28,7 +28,7 @@
             
             btn.addEventListener("click",function() {
                 let productValue = document.querySelector(".product").value;
-                cart.innerHTML + = " " + productValue;
+                cart.innerHTML += " " + productValue;
             });
         </script>
     </body>
