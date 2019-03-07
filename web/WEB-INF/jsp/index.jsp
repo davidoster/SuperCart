@@ -9,7 +9,7 @@
     </head>
 
     <body>
-        <form name="loginForm" action="login.html" method="POST">
+        <form name="loginForm" action="products.html" method="POST">
             <p>
                 <label for="username">Username: </label>
                 <input type="text" name="username" value="admin" size="45" />

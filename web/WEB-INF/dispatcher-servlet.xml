@@ -20,7 +20,7 @@
         <property name="mappings">
             <props>
                 <prop key="index.html">indexController</prop>
-                <prop key="login.html">loginController</prop>
+                <prop key="products.html">loginController</prop>
             </props>
         </property>
     </bean>
@@ -38,7 +38,7 @@
           p:viewName="index" />
     
     <bean name="loginController"
-          class="controllers.loginController"
+          class="controllers.LoginController"
            />
 
 </beans>
